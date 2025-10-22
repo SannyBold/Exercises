@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 dna_seq = "ACTGATCGATTACGTATAGTATTTGCTATCATACATATATATCGATGCGTTCAT"
 #count As
 Acount = dna_seq.count("A")
@@ -14,17 +16,16 @@ print(complement_seq)
 
 #find Ecori site
 dna_seq = "ACTGATCGATTACGTATAGTAGAATTCTATCATACATATATATCGATGCGTTCAT"
-dna_seq.find("GAATTC")
-dna_seq_ri_len = len(str(dna_seq[21:len(dna_seq)]))
-cut_site = dna_seq.find("G", 21)
+len_cut_1 = dna_seq.find("GAATTC") + 1
+len_cut_2 = len(str(dna_seq[len_cut_1:]))
 print(cut_site)
 
 #splicing
 genomic_dna = "ATCGATCGATCGATCGACTGACTAGTCATAGCTATGCATGTAGCTACTCGATCGATCGATCGATCGATCGATCGATCGATCGATCATGCTATCATCGATCGATATCGATGCATCGACTACTAT"
-exon1 = genomic_dna[:64]
-exon2 = genomic_dna[91:len(genomic_dna)]
+exon1 = genomic_dna[:63]
+exon2 = genomic_dna[90:]
 exons = exon1 + exon2
-intron = genomic_dna[64:92]
+intron = genomic_dna[62:91]
 print(exons)
 percentagecoding=len(exons)*100/len(genomic_dna)
 print(percentagecoding)
