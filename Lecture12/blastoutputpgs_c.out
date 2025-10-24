@@ -1,0 +1,10 @@
+# BLASTX 2.17.0+
+# Query: plain genomic sequence coding 1...63 & 91...126 len=98
+# Database: /home/s2850039/Exercises/Lecture06/nem
+# Fields: query acc.ver, subject acc.ver, % identity, alignment length, mismatches, gap opens, q. start, q. end, s. start, s. end, evalue, bit score
+# 4 hits found
+plain	gi|341886813|gb|EGT42748.1|	53.333	15	7	0	54	98	69	83	2.7	24.3
+plain	gi|324505401|gb|ADY42323.1|	46.667	15	8	0	36	80	554	568	3.0	24.3
+plain	gi|324508698|gb|ADY43669.1|	46.667	15	8	0	36	80	366	380	3.0	24.3
+plain	gi|402590238|gb|EJW84169.1|	47.059	17	9	0	43	93	318	334	6.2	23.5
+# BLAST processed 1 queries
