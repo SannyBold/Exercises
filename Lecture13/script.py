@@ -115,10 +115,52 @@ for i in range(0, len(H2Bseq) + 1, offset):
 
 #take sequences from collection of files and sort based on size
 
-for file in (myhome + "/Exercises/Lecture13"):
-    if file.endswith(".dna"):
-        with open(file) as dna:
-            dna = dna.read()
+os.chdir(myhome + "/Exercises/Lecture13")
+
+for ilower in range(100, 1000, 100):
+    iupper = ilower + 99
+    dirname = str(ilower)+ "-" + str(iupper)
+    os.mkdir(dirname)
+
+for filename in listdir(myhome + '/Exercises/Lecture13'):
+    if filename.endswith('.dna'):
+        with open(filename) as file:
+            file = file.read().split("\n")
+            for seq in file:
+                num = len(seq)
+                for ilower in list(range(100, 1000, 100)):
+                    iupper = ilower + 99
+                    dirname = str(ilower)+ "-" + str(iupper)
+                    if num >= ilower and num <= iupper:
+                        output_path = dirname + "/" + "seq.dna"
+                        with open(output_path, "a") as output:
+                            output.write(seq + "\n")
+                        
+
+
+
+
+#bases = []
+#for i in range(1, 10):
+    #os.mkdir(f"{i*100}base")
+    #bases.append(i*100)
+    #
+#
+#with os.scandir(myhome + "/Exercises/Lecture13") as es:
+    #for file in es:
+        #if file.name.endswith(".dna"):
+            #with open(file.path) as dna:
+                #dna = dna.read().split()
+                #for seq in dna:
+                    #num = len(seq)
+                    #for b in bases:
+                        #if num < b:
+                            #name = f"{num}base.txt"
+                            #with open(os.path.join(out, name), "a") as out:
+                                #out.write(seq + "\n")
+#
+#
+
 
 
 
