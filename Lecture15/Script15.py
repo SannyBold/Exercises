@@ -18,15 +18,15 @@ def aa_percent_calc(prot, aa):
 
 def aa_percentages_calculator(prot, aa_list=["A", "I", "L", "M"," F", "W", "Y", "V"]):
     protein_seq = prot
-    aa_codes = list(aa_list)
-    percentages = []
+    aa_codes = list(aa_list.upper())
+    percentages = set()
     for aa in aa_codes:
         count=0
         for i in range(len(protein_seq)):
             if protein_seq[i] == aa:
                 count += 1
         percent_aa = count*100/len(protein_seq)
-        percentages.append((aa, percent_aa))
+        percentages.add((aa, percent_aa)) #tupple cuz multiple args not taken
         print(f" {aa} % in {protein_seq} is {percent_aa}")
     return percentages
 
@@ -45,15 +45,17 @@ def non_dna_detection(dna, threshold=20):
         return False
     else:
         return True
-
+#could also just do return non_base_per >= thresh
 #Write a Python function that, given any DNA sequence, will print all the k-mers (e.g. 4-mers) that occur more than n times. 
 
-def k_mer(dna, n=3):
+def k_mer(dna, k_size = 2, n=3):
     seq = dna.upper()
-    window = 4
+    window = k_size
     num = n
     kmers = []
     n_rep = set()
+    if k_size < 2 or k_size > 50:
+        return "inappropriate kmer length"
     for i in range(len(seq)):
         kmers.append(seq[i:i+window])
     for seq in kmers:
@@ -67,12 +69,12 @@ def k_mer(dna, n=3):
 #2. the kmer length for analysis
 #3. the threshold frequency of kmers found (i.e. the "more than this number" value)
 
-def k_mer_int(dna, k, n=3):
+def k_mer_int(dna, k=2, n=3):
     while True:
         print("enter a DNA sequence:")
         dna = str(input()).upper()
-        if len(dna) > 1000:
-            print("sequence too long (over 1000)")
+        if len(dna) > 1000 or len(dna) < 2:
+            print("sequence too long (over 1000) or too short (< 2)")
         else:
             break
     while True:
